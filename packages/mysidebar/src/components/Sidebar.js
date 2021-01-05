@@ -14,26 +14,25 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
   },
-  heroContent: {
+  menuTitle: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-    padding: "20px",
-    width: "100%"
-    
-  },
+  }
 }));
 
-export default function Album() {
+const buttonStyle = {
+  marginTop: "20px",
+  padding: "20px",
+  width: "100%"
+}
+
+export default function Sidebar() {
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
+        <div className={classes.menuTitle}>
           <Container maxWidth="sm">
             <Typography
               variant="h5"
@@ -44,22 +43,22 @@ export default function Album() {
               Sidebar
             </Typography>
             <div>
-                <Button variant="contained" color="primary" className={classes.heroButtons}> 
+                <Button variant="contained" color="primary" style={buttonStyle}> 
                   Button 1 
                 </Button>
               </div>
               <div>
-                <Button variant="contained" color="primary" className={classes.heroButtons}>
+                <Button variant="contained" color="primary" style={buttonStyle}> 
                  Button 2
                 </Button>
               </div>
               <div>
-                <Button variant="contained" color="primary" className={classes.heroButtons}>
+                <Button variant="contained" color="primary" style={buttonStyle}> 
                  Button 3
                 </Button>
               </div>
               <div>
-                <Button variant="contained" color="primary" className={classes.heroButtons}>
+                <Button variant="contained" color="primary" style={buttonStyle}> 
                  Button 4
                 </Button>
               </div>

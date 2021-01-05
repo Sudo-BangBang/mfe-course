@@ -5,7 +5,7 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 import SideBar from './components/Sidebar';
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'sb'
+  productionPrefix: 'sb123'
 })
 
 export default ({history, onSignIn}) => {
