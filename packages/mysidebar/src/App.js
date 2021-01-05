@@ -5,17 +5,18 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 import SideBar from './components/Sidebar';
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'sb123'
+  productionPrefix: 'sb'
 })
 
-export default ({history, onSignIn}) => {
+export default ({history, isSignedIn}) => {
+
   return (
     <div>
       <StylesProvider generateClassName={generateClassName}>
         <Router history={history}>
           <Switch>
             <Route path="/">
-              <SideBar/>
+              <SideBar isSignedIn={!isSignedIn}/>
             </Route>
           </Switch>
         </Router>

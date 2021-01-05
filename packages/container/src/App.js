@@ -40,7 +40,7 @@ export default () => {
           />
           <div>
             <div style={{width: "20%", float: "left"}}>
-              <MySidebar onSignIn={() => setIsSignedIn(true)} />
+              <MySidebar isSignedIn={isSignedIn} />
             </div>
             <div style={{width: "80%", float: "right"}}>
               <Suspense fallback={<Progress />}>

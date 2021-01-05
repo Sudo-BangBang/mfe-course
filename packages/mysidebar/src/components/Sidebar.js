@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -20,13 +20,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 const buttonStyle = {
   marginTop: "20px",
   padding: "20px",
   width: "100%"
 }
 
-export default function Sidebar() {
+export default function Sidebar({isSignedIn}) {
   const classes = useStyles();
 
   return (
@@ -42,15 +43,19 @@ export default function Sidebar() {
             >
               Sidebar
             </Typography>
-            <div>
-                <Button variant="contained" color="primary" style={buttonStyle}> 
-                  Button 1 
-                </Button>
+              <div>
+                <Link to="/">
+                  <Button variant="contained" color="primary" style={buttonStyle}> 
+                    Home
+                  </Button>
+                </Link>
               </div>
               <div>
-                <Button variant="contained" color="primary" style={buttonStyle}> 
-                 Button 2
-                </Button>
+                <Link to="/dashboard">
+                  <Button variant="contained" color="primary" style={buttonStyle} disabled={isSignedIn}> 
+                  Dashboard
+                  </Button>
+                </Link>
               </div>
               <div>
                 <Button variant="contained" color="primary" style={buttonStyle}> 
