@@ -8,10 +8,12 @@ import { createBrowserHistory } from 'history';
 
 import Progress from './components/Progress';
 import Header from './components/Header';
+import MySidebar from './components/MySidebarApp';
 
 const MarketingLazy = lazy(() => import('./components/MarketingApp'));
 const AuthLazy = lazy(() => import('./components/AuthApp'));
 const DashboardLazy = lazy(() => import('./components/DashboardApp'));
+// const SidebarLazy = lazy(() => import('./components/SidebarApp'));
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'co',
@@ -36,18 +38,25 @@ export default () => {
             onSignOut={() => setIsSignedIn(false)}
             isSignedIn={isSignedIn}
           />
-          <Suspense fallback={<Progress />}>
-            <Switch>
-              <Route path="/auth">
-                <AuthLazy onSignIn={() => setIsSignedIn(true)} />
-              </Route>
-              <Route path="/dashboard">
-                {!isSignedIn && <Redirect to="/" />}
-                <DashboardLazy />
-              </Route>
-              <Route path="/" component={MarketingLazy} />
-            </Switch>
-          </Suspense>
+          <div>
+            <div style={{width: "20%", float: "left"}}>
+              <MySidebar onSignIn={() => setIsSignedIn(true)} />
+            </div>
+            <div style={{width: "80%", float: "right"}}>
+              <Suspense fallback={<Progress />}>
+                <Switch>
+                  <Route path="/auth">
+                    <AuthLazy onSignIn={() => setIsSignedIn(true)} />
+                  </Route>
+                  <Route path="/dashboard">
+                    {!isSignedIn && <Redirect to="/" />}
+                    <DashboardLazy />
+                  </Route>
+                  <Route path="/" component={MarketingLazy} />
+                </Switch>
+              </Suspense>
+            </div>
+          </div>
         </div>
       </StylesProvider>
     </Router>
