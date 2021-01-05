@@ -1,4 +1,5 @@
 import React from 'react';
+import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -30,6 +31,23 @@ const buttonStyle = {
 export default function Sidebar({isSignedIn}) {
   const classes = useStyles();
 
+  let dashboardButton;
+  if(isSignedIn){
+    dashboardButton =
+    <Button variant="contained" color="primary" style={buttonStyle}>
+      Dashboard
+    </Button>
+  }else{
+    dashboardButton = 
+    <Tooltip title="Signin to access" arrow placement="right">
+      <div>
+        <Button variant="contained" color="primary" style={buttonStyle} disabled={true}>
+          Dashboard
+        </Button>
+      </div>                    
+   </Tooltip>
+  }
+
   return (
     <React.Fragment>
       <main>
@@ -52,9 +70,7 @@ export default function Sidebar({isSignedIn}) {
               </div>
               <div>
                 <Link to="/dashboard">
-                  <Button variant="contained" color="primary" style={buttonStyle} disabled={isSignedIn}> 
-                  Dashboard
-                  </Button>
+                  {dashboardButton}
                 </Link>
               </div>
               <div>

@@ -16,7 +16,7 @@ export default ({history, isSignedIn}) => {
         <Router history={history}>
           <Switch>
             <Route path="/">
-              <SideBar isSignedIn={!isSignedIn}/>
+              <SideBar isSignedIn={isSignedIn}/>
             </Route>
           </Switch>
         </Router>
