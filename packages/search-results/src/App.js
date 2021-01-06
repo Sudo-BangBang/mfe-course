@@ -6,7 +6,7 @@ import Results from './components/SearchResults';
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'sr'
-})
+});
 
 export default ({history, results}) => {
 

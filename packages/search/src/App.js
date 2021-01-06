@@ -30,7 +30,7 @@ export default ({history, setSearchState}) => {
 
       for (let i = 0; i < Math.floor(Math.random() * 5) + 1  ; i++) {
         result.tags[i] = faker.commerce.productAdjective();
-      } 
+      }
 
       results[i] = result;
     }
