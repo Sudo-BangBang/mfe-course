@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Router } from 'react-router-dom';
 import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
 import faker from 'faker';
+import { v4 as uuidv4 } from 'uuid';
 
 import Search from './components/Search';
 
@@ -17,6 +18,7 @@ export default ({history, setSearchState}) => {
 
     for (let i = 0; i < Math.floor(Math.random() * 15) + 1  ; i++) {
       const result = {
+        id: uuidv4(),
         name: faker.commerce.productName(),
         price: faker.commerce.price(),
         department: faker.commerce.department(),
@@ -37,6 +39,8 @@ export default ({history, setSearchState}) => {
       query: query,
       results: results
     });
+
+
   }
 
   return (

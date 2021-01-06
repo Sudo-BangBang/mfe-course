@@ -74,9 +74,11 @@ export default function Sidebar({isSignedIn}) {
                 </Link>
               </div>
               <div>
-                <Button variant="contained" color="primary" style={buttonStyle}> 
-                 Button 3
-                </Button>
+              <Link to="/search-results">
+                  <Button variant="contained" color="primary" style={buttonStyle}> 
+                    Search
+                  </Button>
+                </Link>
               </div>
               <div>
                 <Button variant="contained" color="primary" style={buttonStyle}> 

@@ -14,7 +14,7 @@ import Search from './components/SearchApp';
 const MarketingLazy = lazy(() => import('./components/MarketingApp'));
 const AuthLazy = lazy(() => import('./components/AuthApp'));
 const DashboardLazy = lazy(() => import('./components/DashboardApp'));
-// const SidebarLazy = lazy(() => import('./components/SidebarApp'));
+const SearchResultsLazy = lazy(() => import('./components/SearchResults'));
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'co',
@@ -39,7 +39,7 @@ export default () => {
 
   useEffect(() => {
     if(searchState.query && searchState.query.length){
-      history.push('/pricing');
+      history.push('/search-results');
       console.log(searchState);
     }
     
@@ -68,6 +68,9 @@ export default () => {
                   <Route path="/dashboard">
                     {!isSignedIn && <Redirect to="/" />}
                     <DashboardLazy />
+                  </Route>
+                  <Route path="/search-results">
+                    <SearchResultsLazy results={searchState.results}/>
                   </Route>
                   <Route path="/" component={MarketingLazy} />
                 </Switch>
