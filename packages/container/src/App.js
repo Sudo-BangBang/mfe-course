@@ -9,6 +9,7 @@ import { createBrowserHistory } from 'history';
 import Progress from './components/Progress';
 import Header from './components/Header';
 import MySidebar from './components/MySidebarApp';
+import Search from './components/SearchApp';
 
 const MarketingLazy = lazy(() => import('./components/MarketingApp'));
 const AuthLazy = lazy(() => import('./components/AuthApp'));
@@ -23,12 +24,26 @@ const history = createBrowserHistory();
 
 export default () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [searchState, setSearchState] = useState({
+    query: "",
+    results: []
+  });
 
   useEffect(() => {
     if (isSignedIn) {
       history.push('/dashboard');
     }
   }, [isSignedIn]);
+
+
+
+  useEffect(() => {
+    if(searchState.query && searchState.query.length){
+      history.push('/pricing');
+      console.log(searchState);
+    }
+    
+  }, [searchState]);
 
   return (
     <Router history={history}>
@@ -40,6 +55,8 @@ export default () => {
           />
           <div>
             <div style={{width: "20%", float: "left"}}>
+              <Search setSearchState={(state)=>setSearchState(state)} />
+              <hr/>
               <MySidebar isSignedIn={isSignedIn} />
             </div>
             <div style={{width: "80%", float: "right"}}>

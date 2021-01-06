@@ -9,17 +9,14 @@ const prodConfig = {
   mode: 'production',
   output: {
       filename: '[name].[contenthash].js',
-      publicPath: '/container/latest/'
+      publicPath: '/search/latest/'
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'container',
-      remotes: {
-        marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
-        auth: `auth@${domain}/auth/latest/remoteEntry.js`,
-        dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`,
-        mysidebar: `mysidebar@${domain}/mysidebar/latest/remoteEntry.js`,
-        search: `search@${domain}/search/latest/remoteEntry.js`,
+      name: 'search',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './SearchApp': './src/bootstrap',
       },
       shared: packageJson.dependencies,
     })
