@@ -20,7 +20,7 @@ const prodConfig = {
         dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`,
         mysidebar: `mysidebar@${domain}/mysidebar/latest/remoteEntry.js`,
         search: `search@${domain}/search/latest/remoteEntry.js`,
-        searchResults: `searchresults@${domain}/search-results/latest/remoteEntry.js`,
+        searchResults: `searchresults@${domain}/searchresults/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     })
