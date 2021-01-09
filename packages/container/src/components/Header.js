@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header({ isSignedIn, onSignOut }) {
+export default function Header({ isSignedIn, onSignOut, showMfes, toggleMfes }) {
   const classes = useStyles();
 
   const onClick = () => {
@@ -81,6 +81,13 @@ export default function Header({ isSignedIn, onSignOut }) {
           >
             App
           </Typography>
+          <Button
+            color="primary"
+            variant="outlined"
+            onClick={toggleMfes}
+          >
+            {showMfes ? 'Hide MFEs' : 'Show MFEs'}
+          </Button>
           <Button
             color="primary"
             variant="outlined"

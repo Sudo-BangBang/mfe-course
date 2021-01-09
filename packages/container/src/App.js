@@ -29,6 +29,8 @@ export default () => {
     results: []
   });
 
+  const [showMfes, setShowMfes] = useState(false);
+
   useEffect(() => {
     if (isSignedIn) {
       history.push('/dashboard');
@@ -52,27 +54,44 @@ export default () => {
           <Header
             onSignOut={() => setIsSignedIn(false)}
             isSignedIn={isSignedIn}
+            showMfes={showMfes}
+            toggleMfes={() => setShowMfes(!showMfes)}
           />
           <div>
             <div style={{width: "20%", float: "left"}}>
-              <Search setSearchState={(state)=>setSearchState(state)} />
+              <div style={showMfes ? {border: "20px solid red"} : {}}>
+                <Search setSearchState={(state)=>setSearchState(state)} />
+              </div>
               <hr/>
-              <MySidebar isSignedIn={isSignedIn} />
+              <div style={showMfes ? {border: "20px solid blue"} : {}}>
+                <MySidebar isSignedIn={isSignedIn} />
+              </div>
             </div>
             <div style={{width: "80%", float: "right"}}>
               <Suspense fallback={<Progress />}>
                 <Switch>
                   <Route path="/auth">
-                    <AuthLazy onSignIn={() => setIsSignedIn(true)} />
+                    <div style={showMfes ? {border: "20px solid green"} : {}}>
+                      <AuthLazy onSignIn={() => setIsSignedIn(true)} />
+                    </div>
                   </Route>
                   <Route path="/dashboard">
                     {!isSignedIn && <Redirect to="/" />}
-                    <DashboardLazy />
+                    <div style={showMfes ? {border: "20px solid orange"} : {}}>
+                      <DashboardLazy />
+                    </div>
                   </Route>
                   <Route path="/search-results">
-                    <SearchResultsLazy results={searchState.results}/>
+                    <div style={showMfes ? {border: "20px solid yellow"} : {}}>
+                      <SearchResultsLazy results={searchState.results}/>
+                    </div>
                   </Route>
-                  <Route path="/" component={MarketingLazy} />
+                  <Route path="/" component={MarketingLazy}>
+                    <div style={showMfes ? {border: "20px solid purple"} : {}}>
+                      <MarketingLazy/>
+                    </div>
+                  </Route>
+                  
                 </Switch>
               </Suspense>
             </div>
