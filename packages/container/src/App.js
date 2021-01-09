@@ -40,11 +40,7 @@ export default () => {
 
 
   useEffect(() => {
-    if(searchState.query && searchState.query.length){
-      history.push('/search-results');
-      console.log(searchState);
-    }
-    
+    history.push('/search-results');
   }, [searchState]);
 
   return (

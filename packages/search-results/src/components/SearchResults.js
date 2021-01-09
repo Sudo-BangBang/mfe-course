@@ -68,16 +68,15 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Results({results}) {
   const classes = useStyles();
-  console.log(results);
 
   return (
     <React.Fragment>
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
-            {results.map((result) => (
-              <Grid item key={result.id} xs={12} sm={12} md={12}>
+            {results.map((result) => {
+              return (
+              <Grid key={result.id} item xs={12} sm={12} md={12}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
@@ -107,7 +106,7 @@ export default function Results({results}) {
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
+            )})}
           </Grid>
         </Container>
       </main>

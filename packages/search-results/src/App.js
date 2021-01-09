@@ -10,15 +10,13 @@ const generateClassName = createGenerateClassName({
 
 export default ({history, results}) => {
 
-  const [stateResults, setResults] = useState(results);
-
   return (
     <div>
       <StylesProvider generateClassName={generateClassName}>
         <Router history={history}>
           <Switch>
             <Route exact path="/search-results">
-              <Results results={stateResults}/>
+              <Results results={results}/>
             </Route>
           </Switch>
         </Router>
